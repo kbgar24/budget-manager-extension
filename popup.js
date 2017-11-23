@@ -30,7 +30,7 @@ $(function(){
           type: 'basic',
           iconUrl: 'icon48.png',
           title: 'Limit reached!',
-          message: "Uh oh! Looks lik you've reached your limit!"
+          message: "Uh oh! Looks like you've reached your limit!"
         };
         chrome.notifications.create('limitNotif', notificationOptions);
         setTimeout(chrome.notifications.clear('limitNotif'), 1000);
