@@ -12,7 +12,8 @@
       "default_icon": "icon16.png",
       "default_popup": "popup.html"
   },
-  "scripts": ["jquery-3.2.1.min.js", "popup.js"],
+  "options_page": "options.html",
+  "scripts": ["jquery-3.2.1.min.js", "popup.js", "options.js"],
   "permissions": [
     "storage"
   ]

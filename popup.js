@@ -5,6 +5,12 @@ $(function(){
     }
   });
 
+  chrome.storage.sync.get('limit', function(budget){
+    if (budget.limit) {
+      $('#limit').text(budget.limit);
+    }
+  });
+
   $('#spendForm').submit(function(e){
     e.preventDefault();
   });
@@ -27,6 +33,7 @@ $(function(){
 
       $('#total').text(newTotal);
       $('#amount').val('');
+      $('#amount').focus();
     })
   })
 })
