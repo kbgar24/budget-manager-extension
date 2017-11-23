@@ -15,18 +15,27 @@ $(function(){
   $('#amount').focus();
 
   $('#spendAmount').click(function(){
-    chrome.storage.sync.get('total', function(budget){
+    chrome.storage.sync.get(['total', 'limit'], function(budget){
       var newTotal = 0;
       if (budget.total){
         newTotal += parseInt(budget.total);
       }
 
-      let amount = $('#amount').val();
-      if (amount && !isNaN(amount)){
+      const amount = $('#amount').val();
+      if (amount && parseInt(newTotal) + parseInt(amount) < budget.limit){
         newTotal += parseInt(amount);
+        chrome.storage.sync.set({'total': newTotal});
+      } else if (amount) {
+        const notificationOptions = {
+          type: 'basic',
+          iconUrl: 'icon48.png',
+          title: 'Limit reached!',
+          message: "Uh oh! Looks lik you've reached your limit!"
+        };
+        chrome.notifications.create('limitNotif', notificationOptions);
+        setTimeout(chrome.notifications.clear('limitNotif'), 1000);
       }
 
-      chrome.storage.sync.set({'total': newTotal});
 
       $('#total').text(newTotal);
       $('#amount').val('');

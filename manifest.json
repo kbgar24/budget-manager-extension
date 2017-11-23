@@ -13,8 +13,8 @@
       "default_popup": "popup.html"
   },
   "options_page": "options.html",
-  "scripts": ["jquery-3.2.1.min.js", "popup.js", "options.js"],
   "permissions": [
-    "storage"
+    "storage",
+    "notifications"
   ]
 }
