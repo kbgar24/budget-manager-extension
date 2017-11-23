@@ -1,11 +1,8 @@
 $(function(){
-  chrome.storage.sync.get('total', function(budget){
+  chrome.storage.sync.get(['total', 'limit'], function(budget){
     if (budget.total) {
       $('#total').text(budget.total);
     }
-  });
-
-  chrome.storage.sync.get('limit', function(budget){
     if (budget.limit) {
       $('#limit').text(budget.limit);
     }
