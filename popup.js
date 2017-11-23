@@ -1,4 +1,10 @@
 $(function(){
+  chrome.storage.sync.get('total', function(budget){
+    if (budget.total) {
+      $('#total').text(budget.total);
+    }
+  });
+
   $('#spendForm').submit(function(e){
     e.preventDefault();
   });
